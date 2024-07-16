@@ -14,21 +14,20 @@ export const createDoctor = catchAsync(async (req, res, next) => {
     "qualifications",
     "about",
     "specialities",
-    "designation",
     "languages",
-    "institute",
     "department",
     "workExperience",
     "chamberTime",
     "offDays",
     "floorNo",
     "roomNumber",
-    "branchNames",
-    "bmdcNo",
-    "consulatationFee",
+    "consultationFee",
     "phone",
-    "feesToShowReport"
   );
+
+  console.log(req.body)
+  console.log(doctorData)
+
 
   const specialityIds = await getSpecialityIds(doctorData.specialities);
 
@@ -111,7 +110,7 @@ export const updateDoctor = catchAsync(async (req, res, next) => {
     "roomNumber",
     "branchNames",
     "bmdcNo",
-    "consulatationFee",
+    "consultationFee",
     "phone",
     "feesToShowReport"
   );

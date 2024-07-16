@@ -49,8 +49,8 @@ const userSchema = mongoose.Schema(
     role: {
       type: String,
       enum: {
-        values: ["patient", "admin", "hospital"],
-        message: "Role is either: patient, admin, or hospital",
+        values: ["patient", "admin", "hospital", "doctor"],
+        message: "Role is either: patient, admin, hospital, or doctor",
       },
       default: "patient",
     },
@@ -60,7 +60,7 @@ const userSchema = mongoose.Schema(
     },
     profileModel: {
       type: String,
-      enum: ["Patient", "Hospital", null],
+      enum: ["Patient", "Hospital", null, "Doctor"],
       default: null,
     },
     isVerified: {
