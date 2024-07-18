@@ -42,7 +42,7 @@ const doctorSchema = new mongoose.Schema(
     roomNumber: String,
     branchNames: [String],
     bmdcNo: String,
-    consulatationFee: Number,
+    consultationFee: Number,
     phone: String,
     feesToShowReport: Number,
     hospital: {

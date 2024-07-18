@@ -25,7 +25,7 @@ export const createDoctor = catchAsync(async (req, res, next) => {
     "roomNumber",
     "branchNames",
     "bmdcNo",
-    "consulatationFee",
+    "consultationFee",
     "phone",
     "feesToShowReport"
   );
@@ -93,6 +93,7 @@ export const getDoctorById = catchAsync(async (req, res, next) => {
 });
 
 export const updateDoctor = catchAsync(async (req, res, next) => {
+  console.log(req.body)
   const doctorData = filterObj(
     req.body,
     "name",
@@ -111,10 +112,12 @@ export const updateDoctor = catchAsync(async (req, res, next) => {
     "roomNumber",
     "branchNames",
     "bmdcNo",
-    "consulatationFee",
+    "consultationFee",
     "phone",
     "feesToShowReport"
   );
+
+  console.log(doctorData.consultationFee);
 
   if (doctorData.specialities) {
     const specialityIds = await getSpecialityIds(doctorData.specialities);
