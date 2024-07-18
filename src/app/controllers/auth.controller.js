@@ -261,6 +261,8 @@ export const updatePassword = catchAsync(async (req, res, next) => {
 export const forgotPassword = catchAsync(async (req, res, next) => {
   const { mobileNo } = req.body;
 
+  // console.log(mobileNo);
+
   const user = await User.findOne({ mobileNo });
 
   if (!user) {
@@ -274,6 +276,7 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
 
   try {
     const result = await sendSms(user.mobileNo, message);
+    console.log(result);
 
     if (result.success_message) {
       return res.status(200).json({
