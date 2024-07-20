@@ -88,6 +88,13 @@ export const signup = catchAsync(async (req, res, next) => {
     "confirmPassword"
   );
 
+
+  /* check user already exit  */
+  const existingUser = await User.findOne({ mobileNo: userData.mobileNo });
+  if (existingUser) {
+    return next(new AppError("User already exists with this mobile number!", 400));
+  }
+
   const newPatient = await Patient.create({
     name: userData.name,
     contactNumber: userData.mobileNo,
@@ -142,6 +149,8 @@ export const login = catchAsync(async (req, res, next) => {
       },
     });
   }
+
+  console.log(user);
 
   return sendTokenResponse(user, 200, res);
 });

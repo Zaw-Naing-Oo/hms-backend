@@ -25,7 +25,8 @@ const userSchema = mongoose.Schema(
       validate: {
         validator: (value) => {
           if (value.length === 0) return true;
-          return validator.isMobilePhone(value);
+          // myanmar support
+          return validator.isMobilePhone(value, "my-MM");
         },
         message: "Please provide a valid contact number",
       },
