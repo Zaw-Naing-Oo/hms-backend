@@ -14,6 +14,12 @@ export const createHospital = catchAsync(async (req, res, next) => {
     "confirmPassword"
   );
 
+  /* check user already exit  */
+  const existingUser = await User.findOne({ mobileNo: userData.mobileNo });
+  if (existingUser) {
+    return next(new AppError(" Hospital already registered", 400));
+  }
+
   const newHospital = await Hospital.create({
     name: userData.name,
   });
