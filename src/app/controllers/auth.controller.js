@@ -194,6 +194,8 @@ export const verifyOTP = catchAsync(async (req, res, next) => {
 export const protect = catchAsync(async (req, res, next) => {
   const token = req.headers?.authorization?.split(" ")[1];
 
+  // console.log(token);
+
   if (!token) {
     return next(
       new AppError("You are not logged in! Please log in to get access.", 401)

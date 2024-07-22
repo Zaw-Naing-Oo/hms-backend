@@ -113,6 +113,7 @@ export const getAdmins = catchAsync(async (req, res, next) => {
 });
 
 export const deleteAdmin = catchAsync(async (req, res, next) => {
+  // console.log(req, req.params.adminId);
   if (req.user._id === req.params.adminId) {
     return next(new AppError("You can't delete yourself", 400));
   }

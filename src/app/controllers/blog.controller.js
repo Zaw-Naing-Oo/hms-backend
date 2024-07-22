@@ -37,6 +37,7 @@ export const createNewBlog = catchAsync(async (req, res, next) => {
 });
 
 export const getAllBlogs = catchAsync(async (req, res, next) => {
+  console.log(req.query)
   req.query.populate = "author:name|email";
 
   const totalFeatures = new APIFeaturesQuery(Blog.find(), req.query).filter();
@@ -136,8 +137,9 @@ export const deleteBlog = catchAsync(async (req, res, next) => {
 
   if (
     (req.user.role === "hospital" &&
-      blog.author.toString() !== req.user._id.toString()) ||
-    (req.user.role === "admin" && blog.postedBy === "hospital")
+      blog.author.toString() !== req.user._id.toString())
+    // ||
+    // (req.user.role === "admin" && blog.postedBy === "hospital")
   ) {
     return next(
       new AppError("You are not authorized to delete this blog", 403)
