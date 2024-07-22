@@ -1,5 +1,5 @@
 import config from "../config/index.js";
-import twilio from "twilio";
+// import twilio from "twilio";
 
 // const accountSSID = 'AC09dea3f37249211ec933b72042311a9c';
 // const token = '[54d3adddedbc1b20fe2d2856a4efccdc]';
