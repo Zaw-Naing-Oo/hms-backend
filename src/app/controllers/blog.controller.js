@@ -102,8 +102,9 @@ export const updateBlog = catchAsync(async (req, res, next) => {
 
   if (
     (req.user.role === "hospital" &&
-      blog.author.toString() !== req.user._id.toString()) ||
-    (req.user.role === "admin" && blog.postedBy === "hospital")
+      blog.author.toString() !== req.user._id.toString())
+    // ||
+    // (req.user.role === "admin" && blog.postedBy === "hospital")
   ) {
     return next(
       new AppError("You are not authorized to update this blog", 403)
