@@ -14,6 +14,7 @@ import overviewRouter from "./app/routes/overview.route.js";
 import userRouter from "./app/routes/user.route.js";
 import config from "./config/index.js";
 import AppError from "./utils/appError.js";
+import patientRouter from "./app/routes/patient.route.js";
 
 
 process.on("uncaughtException", (err) => {
@@ -41,6 +42,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/patients", patientRouter)
 app.use("/api/v1/hospitals", hospitalRouter);
 app.use("/api/v1/doctors", doctorRouter);
 app.use("/api/v1/appointments", appointmentRouter);
