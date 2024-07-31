@@ -12,18 +12,27 @@ export const sendMessage = catchAsync(async (req, res, next) => {
     return next(new AppError("Please provide your name and message", 400));
   }
 
+  const fullMessage = `
+  Name: ${name}
+  Email: ${email || "No email provided"}
+  Subject: ${subject || "No subject"}
+  Message: ${message}
+`;
+
 
 
   await sendEmail(res, {
 
 
     email: config.EMAIL_TO,
+    // emailFrom: email,
+    emailFrom: email,
     // subject: "New message from Hospital Management System",
     // message: `Name: ${name}\nEmail: ${email || ""}\nSubject: ${subject || ""
     //   }\nMessage: ${message}`,
 
     subject,
-    message
+    fullMessage
   });
 
 

@@ -3,6 +3,8 @@ import smtpTransport from "nodemailer-smtp-transport";
 import config from "../config/index.js";
 
 const sendEmail = async (res, options) => {
+
+  console.log(options);
   // 1) Create a transporter
   const transporter = nodemailer.createTransport(
     smtpTransport({
@@ -21,10 +23,11 @@ const sendEmail = async (res, options) => {
 
   // 2) Define the email options
   const mailOptions = {
-    from: "zawnaingoo002345@gmail.com",
+    from: `Hospital Management System <${config.MAIL_USER}>`,
     to: options.email,
     subject: options.subject,
-    text: options.message,
+    text: options.fullMessage,
+    replyTo: options.emailFrom, // Add Reply-To header
   };
 
   // 3) Actually send the email
