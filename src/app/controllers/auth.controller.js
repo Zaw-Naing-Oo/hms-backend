@@ -136,6 +136,10 @@ export const login = catchAsync(async (req, res, next) => {
     select: "-__v -createdAt -updatedAt",
   });
 
+  if (!user) {
+    return next(new AppError("User not found!", 404));
+  }
+
   if (!user || !(await user.correctPassword(password, user.password))) {
     return next(new AppError("Incorrect mobile number or password!", 401));
   }
@@ -150,7 +154,7 @@ export const login = catchAsync(async (req, res, next) => {
     });
   }
 
-  console.log(user);
+  // console.log(user);
 
   return sendTokenResponse(user, 200, res);
 });

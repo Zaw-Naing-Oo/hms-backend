@@ -40,13 +40,17 @@ export const getAllNotices = catchAsync(async (req, res, next) => {
     const decoded = await promisify(jwt.verify)(token, config.JWT_SECRET);
     const currentUser = await User.findById(decoded.id);
 
+    console.log(currentUser)
+
     userRole = currentUser.role;
   }
+
 
   if (userRole !== "admin") {
     req.query.startDate = new Date().setHours(24, 0, 0, 0);
     req.query.audience = { $in: ["all", userRole] };
   }
+
 
   req.query.sort = req.query.sort || "-createdAt";
 
