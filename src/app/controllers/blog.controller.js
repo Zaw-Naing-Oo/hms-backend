@@ -37,7 +37,7 @@ export const createNewBlog = catchAsync(async (req, res, next) => {
 });
 
 export const getAllBlogs = catchAsync(async (req, res, next) => {
-  console.log(req.query)
+  // console.log(req.query)
   req.query.populate = "author:name|email";
 
   const totalFeatures = new APIFeaturesQuery(Blog.find(), req.query).filter();
@@ -52,6 +52,7 @@ export const getAllBlogs = catchAsync(async (req, res, next) => {
     .paginate();
 
   const blogs = await features.query;
+  // console.log(blogs);
 
   res.status(200).json({
     status: "success",

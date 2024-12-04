@@ -62,6 +62,10 @@ export const getAllDoctors = catchAsync(async (req, res, next) => {
   const totalDocs = result[0]?.totalDocs[0]?.count || 0;
   const doctors = result[0]?.paginatedResults || [];
 
+  console.log(totalDocs.length)
+
+  console.log(doctors.length);
+
   return res.status(200).json({
     status: "success",
     message: "Doctors found successfully",
