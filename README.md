@@ -25,7 +25,7 @@ To get started with the application, follow these instructions:
 1. Clone the repository:
 
 ```
-git clone https://github.com/Iamparves/pc-hms-backend
+git clone https://github.com/Zaw-Naing-Oo/hms-backend.git
 cd pc-hms-backend
 ```
 
@@ -48,8 +48,7 @@ JWT_SECRET=your_jwt_secret
 JWT_EXPIRES_IN=90d
 CLIENT_URL=your_client_url
 
-SMS_API_KEY=your_sms_api_key
-SMS_SENDER_ID=your_sms_sender_id
+
 
 MAIL_HOST=your_mail_host
 MAIL_PORT=your_mail_port
